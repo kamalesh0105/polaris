@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header data-bs-theme="dark">
   <div class="collapse text-bg-dark" id="navbarHeader">
     <div class="container">
@@ -17,6 +18,8 @@
       </div>
     </div>
   </div>
+=======
+>>>>>>> aed6bbc65b59ada3a0642208b239e7dd04c3b573
 <div class="navbar navbar-dark bg-dark shadow-sm">
 <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
@@ -27,5 +30,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
+<<<<<<< HEAD
 </div>
 </header>
+=======
+</div>
+>>>>>>> aed6bbc65b59ada3a0642208b239e7dd04c3b573
