@@ -14,4 +14,35 @@ function verify_credentials($username,$password){
     }
 }
 
+function signup($username,$password,$email,$phone){
+$servernamedb = "localhost";
+$usernamedb = "root";
+$passwordb = "alpha";
+$dbname = "photogram";
+
+// Create connection
+$conn = new mysqli($servernamedb, $usernamedb, $passwordb, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}else{
+    //echo "connection-Success";
+}
+
+$sql =" INSERT INTO `auth` (`username`, `password`,`email`, `phone`, `blocked`, `active`)
+VALUES ('$username','$password','$email','$phone', '0', '1')";
+$error=false;
+if ($conn->query($sql) === TRUE) { $error=true;
+} else {
+    $error=$conn->error;
+    //echo "Error:;
+
+}
+
+
+$conn->close();
+return $error;
+echo $error;
+}
+
 ?>

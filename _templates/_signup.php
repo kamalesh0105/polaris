@@ -1,6 +1,45 @@
+<?php
+include "app/libs/load.php";
+$signup=false;
+print_r($_POST);
+if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email']) and isset($_POST['phone'])) {
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+    $eamil=$_POST['email'];
+    $phone=$_POST['phone'];
+    echo "db";
+    $error=signup($username,$password,$email,$phone);
+    echo $error;
+    $signup=true;
+}
+?>
+
+<?if($signup){
+  echo"signup-true";
+  if(!$error){
+    ?>
+    <main class="container">
+  <div class="bg-body-tertiary p-5 rounded mt-3">
+    <h1>signup sucess</h1>
+    <p class="lead">Now you can <a href="/login.php">login...</a></p>
+  </div>
+</main>
+  <?}else{?>
+    <main class="container">
+  <div class="bg-body-tertiary p-5 rounded mt-3">
+    <h1>signup failed</h1>
+    <p class="lead">something went wrong....<?$error?></p>
+  </div>
+</main>
+<?}?>
+<?}else{?>
+
+
+
+
 
 <main class="form-signup w-100 m-auto">
-  <form method="post" action="test.php">
+  <form method="post" action="signup.php">
     <img class="mb-4" src="https://academy.selfmade.ninja/assets/brand/logo-text.svg" alt="Not found" height="60">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <div class="form-floating">
@@ -29,3 +68,4 @@
     <button class="w-100 btn btn-lg btn-primary hvr-wobble-bottom" type="submit" fdprocessedid="p44mr9" >Sign in</button>
   </form>
 </main>
+<?}?>
