@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 $sql =" INSERT INTO `auth` (`username`, `password`,`email`, `phone`, `blocked`, `active`)
 VALUES ('$username','$password','$email','$phone', '0', '1')";
 $error=false;
-if ($conn->query($sql) === TRUE) { $error=true;
+if ($conn->query($sql) === TRUE) { $error=false;
 } else {
     $error=$conn->error;
     //echo "Error:;
@@ -42,7 +42,6 @@ if ($conn->query($sql) === TRUE) { $error=true;
 
 $conn->close();
 return $error;
-echo $error;
 }
 
 ?>

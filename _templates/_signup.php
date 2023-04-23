@@ -5,11 +5,10 @@ print_r($_POST);
 if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email']) and isset($_POST['phone'])) {
     $username=$_POST['username'];
     $password=$_POST['password'];
-    $eamil=$_POST['email'];
+    $email=$_POST['email'];
     $phone=$_POST['phone'];
-    echo "db";
+    echo "into_db";
     $error=signup($username,$password,$email,$phone);
-    echo $error;
     $signup=true;
 }
 ?>
@@ -21,14 +20,14 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     <main class="container">
   <div class="bg-body-tertiary p-5 rounded mt-3">
     <h1>signup sucess</h1>
-    <p class="lead">Now you can <a href="/login.php">login...</a></p>
+    <p class="lead">Now you can <a href="/app/login.php">login...</a></p>
   </div>
 </main>
   <?}else{?>
     <main class="container">
   <div class="bg-body-tertiary p-5 rounded mt-3">
     <h1>signup failed</h1>
-    <p class="lead">something went wrong....<?$error?></p>
+    <p class="lead">something went wrong....<?=$error?></p>
   </div>
 </main>
 <?}?>
