@@ -1,8 +1,8 @@
 <?php
 include_once "includes/Database.class.php";
 include_once "includes/user.class.php";
-
-
+include_once "includes/Session.class.php";
+Session::start();
 
 function load_template($name){
     #print("including ".__DIR__."/../_templates/$name.php");

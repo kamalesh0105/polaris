@@ -1,6 +1,6 @@
 <?
 class User{
-
+    private $conn;
 
     public static function signup($username,$password,$email,$phone){
 
@@ -19,6 +19,15 @@ class User{
 
 
     }
+
+    public function __construct($username){
+        $this->conn=Database::get_connection();
+       // $this=>conn->query();
+    }
+    
+
+
+    //class ends here
 }
 
 
