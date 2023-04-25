@@ -1,6 +1,10 @@
 <pre>
 <?php 
-
+include "libs/includes/Database.class.php";
+Database::get_connection();
+Database::get_connection();
+Database::get_connection();
+Database::get_connection();
 //print_r($_SERVER);
 //print_r($_GET);
 //print_r($_POST);

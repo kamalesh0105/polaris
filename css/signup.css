@@ -1,5 +1,5 @@
  body {
-     background-image: url("img/valley1.jpg");
+     background-image: url("img/valley2.jpg");
 
  }
 
@@ -10,7 +10,7 @@
  .fw-normal,
  .rem-me,
  .mb-1 {
-     color: lightgray;
+     color: darksalmon;
  }
 
  .bd-placeholder-img {

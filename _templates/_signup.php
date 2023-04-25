@@ -9,7 +9,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     $email=$_POST['email'];
     $phone=$_POST['phone'];
     echo "into_db";
-    $error=signup($username,$password,$email,$phone);
+    $error=user::signup($username,$password,$email,$phone);
     $signup=true;
 }
 ?>
