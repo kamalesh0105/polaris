@@ -6,6 +6,20 @@
     user-select: none;
 }
 
+.ankor-link {
+    color: floralwhite;
+}
+
+
+.fw-normal,
+.mb-1,
+.rem-me {
+    color: lightgray;
+}
+
+body {
+    background-image: url("img/valley1.jpg");
+}
 
 .form-signin {
     max-width: 330px;
@@ -27,4 +41,8 @@
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.path-root {
+    color: yellow;
 }

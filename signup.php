@@ -1,6 +1,6 @@
 <?php
 include "libs/load.php";
-
+//echo __DIR__;
 
 
 ?>
@@ -10,7 +10,7 @@ include "libs/load.php";
 <html lang="en" data-bs-theme="auto">
 <?php load_template("_head");?>
   <body>
-    
+     
 <?php load_template("_header");   ?>
 <main>
 <?php load_template("_signup")?>

@@ -9,11 +9,14 @@
     <link href="/app/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <?// print_r($_SERVER['PHP_SELF']);
-print_r($_SERVER['DOCUMENT_ROOT']);?>
-<?if(file_exists($_SERVER['DOCUMENT_ROOT']."/app/css/".basename($_SERVER['PHP_SELF'],".php").".css")){echo "success"?>
+?>
+<div class="path-root">
+<?print_r($_SERVER['DOCUMENT_ROOT']);?>
+<?if(file_exists($_SERVER['DOCUMENT_ROOT']."/app/css/".basename($_SERVER['PHP_SELF'],".php").".css")){echo "  ===>success"?>
         <link href="/app/css/<?=basename($_SERVER['PHP_SELF'],".php");?>.css" rel="stylesheet">
 
 <?}else{echo "  error";}?>
+</div>
 
 <?//}else{echo"error";}?>
 <? //print_r(basename($_SERVER["PHP_SELF"],".php"));?>

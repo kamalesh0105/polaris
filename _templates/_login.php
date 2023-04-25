@@ -32,7 +32,7 @@ if($result){
     </div>
 
     <div class="checkbox mb-3">
-      <label>
+      <label class="rem-me">
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>

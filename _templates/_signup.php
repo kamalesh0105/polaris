@@ -1,7 +1,8 @@
 <?php
 include "app/libs/load.php";
-$signup=false;
-print_r($_POST);
+$signup=false;?>
+<div class="db-data">
+  <?print_r($_POST);
 if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email']) and isset($_POST['phone'])) {
     $username=$_POST['username'];
     $password=$_POST['password'];
@@ -12,6 +13,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     $signup=true;
 }
 ?>
+</div>
 
 <?if($signup){
   echo"signup-true";
@@ -60,7 +62,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     </div>
 
     <div class="checkbox mb-3">
-      <label>
+      <label class="rem-me">
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
