@@ -1,6 +1,6 @@
 <?
 
-use Database as GlobalDatabase;
+//use Database as GlobalDatabase;
 
 class Database{
     public static $conn=null;

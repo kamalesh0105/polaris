@@ -18,10 +18,18 @@ class Session{
         unset($_SESSION[$key]);
     }
     public static function isset($key){
-        isset($_SESSION[$key]);
+        if(
+        isset($_SESSION[$key])){
+            return true;
+
+        }
+        else{
+            return false;
+        }
     }
     public static function get($key,$default=false){
         if(Session::isset($key)){
+            //echo "Session has set";
             return $_SESSION[$key];
         }else{
             return $default;
