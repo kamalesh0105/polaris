@@ -1,18 +1,25 @@
 <?
 include_once "libs/load.php";
 $user="root";
-$pass="toor";
+$pass=isset($_GET['pass']) ? $_GET['pass'] : '';
 $result=null;
 //print_r($_SESSION);
+
 if(Session::get('is_loggedin')){
     echo "Already signed in";
     $userdata=Session::get('session_user');
     //echo "userdata=".$userdata;
     echo "Welcome again $userdata[username]";
+if(isset($_GET['logout'])){
+        Session::destroy();
+        echo "\nSession Destroyed...<a href='logintest.php'>login again</a>";
+    
+    }
+    
 
 
 }else{
-        print("Log in now fella....");
+        print("\nLog in now fella....");
         $result=User::login($user,$pass);
 
         //print_r($result);
@@ -24,7 +31,7 @@ if(Session::get('is_loggedin')){
             //print_r("Result..$result");
         
         }else{
-            echo "Login failed...";
+            echo "Login failed...$result";
         }
         
 }

@@ -6,14 +6,16 @@
     user-select: none;
 }
 
-.ankor-link {
+.ankor-link,
+.link {
     color: floralwhite;
 }
 
 
 .fw-normal,
 .mb-1,
-.rem-me {
+.rem-me,
+.redirect {
     color: lightgray;
 }
 

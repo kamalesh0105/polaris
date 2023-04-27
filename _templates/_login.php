@@ -2,15 +2,18 @@
 $username=$_POST["username"];
 $password=$_POST["password"];
 //echo $username;
-$result=verify_credentials($username,$password);
+//$result=verify_credentials($username,$password);
+$result=User::login($username,$password);
 if($result){
+  echo "Redirecting to the main page..."
   ?>
-  <main class="container">
+  <a class="redirect"  href='index.php'><p class="link">click here to redirect</p></a>
+  <!--<main class="container">
   <div class="bg-body-tertiary p-5 rounded mt-3">
     <h1>login sucess</h1>
     <p class="lead">login success dude......</p>
   </div>
-</main>
+</main>-->
 
 <?php
 
@@ -23,11 +26,11 @@ if($result){
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input  name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" fdprocessedid="ejh8ed">
+      <input  name="username" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" fdprocessedid="ejh8ed" required>
       <label for="floatingInput">Username</label>
     </div>
     <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" fdprocessedid="lbqjnc">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" fdprocessedid="lbqjnc" required>
       <label for="floatingPassword">Password</label>
     </div>
 
