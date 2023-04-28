@@ -2,6 +2,8 @@
 class User
 {
     private $conn;
+    public $username;
+    public $id;
 
     public static function signup($username, $password, $email, $phone)
     {
@@ -27,7 +29,17 @@ class User
     public function __construct($username)
     {
         $this->conn=Database::get_connection();
-        // $this=>conn->query();
+        $this->username=$username;
+        //me
+        $query="SELECT * FROM `auth` WHERE `username` = '$username'";
+        $rawdata=$this->conn->query($query);
+        if($rawdata->num_rows==1){
+            $data=$rawdata->fetch_assoc();
+            $this->id=$data['id'];
+            
+
+        }
+
     }
 
     public static function login($user,$pass){
@@ -59,12 +71,17 @@ class User
 
  }
 
- public static function set_bio()
- {
+ public static function set_bio($bio)
+ {  if($bio){
+    $sql="UPDATE users SET bio='$bio' WHERE id=2";
+    $conn=Database::get_connection();
+    $conn->query($sql);
+ }
 
  }
  public static function get_bio()
  {
+    $sql="SELECT 'bio' FROM `user` WHERE `username` = ''";
 
  }
  public static function set_avatar()

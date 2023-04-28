@@ -11,10 +11,10 @@ class Database{
 
 
 
-$servernamedb = "localhost";
-$usernamedb = "root";
-$passwordb = "alpha";
-$dbname = "photogram";
+$servernamedb = get_config('db_server');
+$usernamedb = get_config('db_username');
+$passwordb = get_config('db_pass');
+$dbname = get_config('db_name');
 
 // Create connection
 $connection = new mysqli($servernamedb, $usernamedb, $passwordb, $dbname);
