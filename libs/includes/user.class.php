@@ -1,9 +1,9 @@
 <?
 class User
 {
-    private $conn;
+    public $conn=false;
     public $username;
-    public $id;
+    private $id;
 
     public static function signup($username, $password, $email, $phone)
     {
@@ -25,20 +25,35 @@ class User
         return $error;
 
     }
+        public function __call($name, $arguments)
+        {
+            echo "\ncall got called";
+            $property=preg_replace("/[^0-9a-zA-Z]/","",substr($name,3));
+            $property=strtolower(preg_replace('/\B([A-Z])/','_$1',$property));
+            //echo "\n".$property;
+            if(substr($name,0,3)=='get'){
+                return $this->_get($property);
 
+            }elseif(substr($name,0,3)=='set')
+                return $this->_set($property,$arguments[0]);
+
+
+        }
     public function __construct($username)
     {
+        echo"Constructor got called\n";
         $this->conn=Database::get_connection();
         $this->username=$username;
         //me
-        $query="SELECT * FROM `auth` WHERE `username` = '$username'";
-        $rawdata=$this->conn->query($query);
-        if($rawdata->num_rows==1){
-            $data=$rawdata->fetch_assoc();
-            $this->id=$data['id'];
-            
-
-        }
+        $query="SELECT id FROM `auth` WHERE `username` = '$username' LIMIT 1";
+        $result=$this->conn->query($query);
+       if($result->num_rows){
+        $data=$result->fetch_assoc();
+        $this->id=$data['id'];
+        echo "\nid=$this->id";
+       }else{
+        throw new Exception("Username does not exists...");
+       }
 
     }
 
@@ -50,7 +65,10 @@ class User
         if($result->num_rows==1){          
             $data=$result->fetch_assoc();
             //if($data['password']==$pass) {
+               // echo "inside verify";
             if(password_verify($pass,$data['password'])){
+                //echo "inside return";
+
                 return $data;
                 //return true;
             }else{
@@ -63,35 +81,78 @@ class User
 
     }
 
+private function _get($var){
+if(!$this->conn) {
+    $this->conn=Database::get_connection();
+}
+echo "\nget got called:$var";
+    $sql="SELECT $var FROM `users` WHERE id='$this->id'";
+    $result=$this->conn->query($sql);
+    if($result->num_rows){
+        echo "\ninside condition";
+        $data=$result->fetch_assoc();
+        return $data["$var"];
+    }else{
+        return null;
+    }
+}
 
+
+private function _set($var,$data){
+if(!$this->conn) {
+   // echo"inside setdata function-1";
+    $this->conn=Database::get_connection();
+   
+}
+
+echo"inside setdata function-2,$var,$data";
+    $sql="UPDATE `users` SET $var='$data' WHERE id='$this->id'";
+    if($this->conn->query($sql)){
+       //echo "inside condition";
+        return true;
+
+    }else{
+        return 'sdsad';
+    }
+    
+
+
+
+}
 
     //class ends here
- public static function authenticate()
- {
+//  public static function authenticate()
+//  {
 
- }
+//  }
 
- public static function set_bio($bio)
- {  if($bio){
-    $sql="UPDATE users SET bio='$bio' WHERE id=2";
-    $conn=Database::get_connection();
-    $conn->query($sql);
- }
+//  public function set_bio($bio)
 
- }
- public static function get_bio()
- {
-    $sql="SELECT 'bio' FROM `user` WHERE `username` = ''";
+// {
+//     //echo "Setbio got called";
+//     return $this->setdata('bio',$bio);
 
- }
- public static function set_avatar()
- {
+//  }
 
- }
 
- public static function get_avatar(){
+//  public  function get_bio()
+//  {
+//     return $this->getdata('bio');
+
+// }
+//  public function set_avatar($link)
+
+//  {
+
+//     return $this->setdata('avatar',$link);
+//  }
+
+//  public function get_avatar(){ 
+
+//      return $this->getdata('avatar');
     
- }
+//  }
+ 
 
 }
 
