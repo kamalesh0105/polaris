@@ -34,8 +34,12 @@ class User
             if(substr($name,0,3)=='get'){
                 return $this->_get($property);
 
-            }elseif(substr($name,0,3)=='set')
+            }elseif(substr($name,0,3)=='set'){
                 return $this->_set($property,$arguments[0]);
+
+            }else{
+                throw new Exception(" User::__call()->$name function not available");
+            }
 
 
         }

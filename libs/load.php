@@ -2,6 +2,7 @@
 include_once "includes/Database.class.php";
 include_once "includes/user.class.php";
 include_once "includes/Session.class.php";
+include_once "includes/usersession.class.php";
 global $_site_config;
 $_site_config=file_get_contents("/var/www/dbconfig.json");
 //echo $_site_config;
