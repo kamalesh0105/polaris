@@ -28,7 +28,7 @@ include "libs/load.php";
 <?php load_template("_footer"); ?>
 
 
-    <script src="/photogram/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
   </body>

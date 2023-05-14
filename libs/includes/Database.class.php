@@ -17,7 +17,9 @@ $passwordb = get_config('db_pass');
 $dbname = get_config('db_name');
 
 // Create connection
+
 $connection = new mysqli($servernamedb, $usernamedb, $passwordb, $dbname);
+
 // Check connection
 if ($connection->connect_error) {
   die("Connection failed: " . $connection->connect_error);

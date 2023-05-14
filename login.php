@@ -25,7 +25,7 @@ include "libs/load.php";
 
 
 
-    <script src="/photogram/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
   </body>
