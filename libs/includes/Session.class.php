@@ -1,5 +1,6 @@
 <?
 class Session{
+    public $user;
 
     public static function start(){
             session_start();

@@ -17,7 +17,7 @@ $passwordb = get_config('db_pass');
 $dbname = get_config('db_name');
 
 // Create connection
-
+echo $servernamedb,$dbname;
 $connection = new mysqli($servernamedb, $usernamedb, $passwordb, $dbname);
 
 // Check connection
