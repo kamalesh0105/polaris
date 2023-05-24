@@ -5,6 +5,7 @@ include_once "includes/Session.class.php";
 include_once "includes/usersession.class.php";
 include_once "includes/Webapi.class.php";
 global $_site_config;
+echo $_SERVER['DOCUMENT_ROOT'].'-end';
 //$_site_config_path=dirname(is_link($_SERVER['DOCUMENT_ROOT']) ? readlink($_SERVER['DOCUMENT_ROOT']) : $_SERVER['DOCUMENT_ROOT'])."/dbconfig.json";
 //echo $_site_config_path;
 //$_site_config=file_get_contents($_site_config_path);

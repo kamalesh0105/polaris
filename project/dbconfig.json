@@ -1,0 +1,8 @@
+{
+
+"db_server":"localhost",
+"db_username":"root",
+"db_pass":"alpha",
+"db_name":"photogram",
+"base_path":"/htdocs/"
+}
