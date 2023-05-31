@@ -10,14 +10,13 @@ class Database{
     if(Database::$conn==null) {
 
 
-
 $servernamedb = get_config('db_server');
 $usernamedb = get_config('db_username');
 $passwordb = get_config('db_pass');
 $dbname = get_config('db_name');
 
 // Create connection
-echo $servernamedb,$dbname;
+//echo $servernamedb,$dbname,$passwordb;
 $connection = new mysqli($servernamedb, $usernamedb, $passwordb, $dbname);
 
 // Check connection
