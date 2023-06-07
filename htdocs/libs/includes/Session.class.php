@@ -43,14 +43,22 @@ class Session{
     public static  function loadtemplate($name){
         #print("including ".__DIR__."/../_templates/$name.php");
         #print(__FILE__);
-        include $_SERVER["DOCUMENT_ROOT"].get_config('base_path')."_templates/$name.php";
+        
+        $script=$_SERVER["DOCUMENT_ROOT"].get_config('base_path')."_templates/$name.php";
+        if(is_file($script)){
+            include $script;
+        }else{
+            Session::loadtemplate("index/error");
+        }
     }
     public static function renderpage(){
         load_template("_master");
     }
     public static function currentscript(
-    ){
-        return (basename($_SERVER['SCRIPT_NAME'],'.php'));
+){  
+    return (basename($_SERVER['SCRIPT_NAME'], '.php'));
+
+
     }
     public static function isauthenticated(){
         return true;
