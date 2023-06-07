@@ -24,8 +24,8 @@ class webapi{
         $_site_config_path=__DIR__.'/../../../project/dbconfig.json';
         //echo "==".$_site_config_path."==";
         $_site_config=file_get_contents($_site_config_path);
-        $a=Database::get_connection();
-        echo $a;
+        Database::get_connection();
+    
     }
 
     public function initiate_session()
