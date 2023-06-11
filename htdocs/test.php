@@ -1,18 +1,11 @@
 <pre>
 <?php 
- include_once "libs/load.php";
+ //include_once "libs/load.php";
 // $ob=new user('root');
-
-// $res=$ob->getAvatar();
-// echo "\nBio is :$res";
-// if($res){
-//   echo "\nsuccess...";
-// }else{
-//   echo  "failed";
-// }
-$ob=new user('root');
-$res=$ob->newfunction();
-//echo "result=$res "
+setcookie('new','val');
+if($_GET['unset']){
+    unset($_COOKIE['new']);
+}
 ?>
 
 </pre>

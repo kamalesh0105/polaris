@@ -3,7 +3,7 @@ class User
 {
     public $conn=false;
     public $username;
-    private $id;
+    public $id;
 
     public static function signup($username, $password, $email, $phone)
     {
@@ -48,8 +48,9 @@ class User
         echo"Constructor got called\n";
         $this->conn=Database::get_connection();
         $this->username=$username;
+        $this->id=null;
         //me
-        $query="SELECT id FROM `auth` WHERE `username` = '$username' LIMIT 1";
+        $query="SELECT * FROM `auth` WHERE `username` = '$username'OR `id` = '$username' OR `email` = '$username' LIMIT 1";
         $result=$this->conn->query($query);
        if($result->num_rows){
         $data=$result->fetch_assoc();
@@ -73,7 +74,7 @@ class User
             if(password_verify($pass,$data['password'])){
                 //echo "inside return";
 
-                return $data;
+                return $data['username'];
                 //return true;
             }else{
                 return false;

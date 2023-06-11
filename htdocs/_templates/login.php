@@ -1,25 +1,44 @@
 <?php
-$username=$_POST["username"];
-$password=$_POST["password"];
+$login=true;
+//Session::set('mode','web');
+//Session::set('test','websksjs');
+if(isset($_POST['username']) and isset($_POST['password'])){
+  $username=$_POST['username'];
+  $password=$_POST['password'];
+  $result=Usersession::authenticate($username,$password);
+ // echo 'res'.$result;
+  $login=false;
+}
 //echo $username;
 //$result=verify_credentials($username,$password);
-$result=User::login($username,$password);
-if($result){
-  echo "Redirecting to the main page..."
-  ?>
-  <a class="redirect"  href='index.php'><p class="link">click here to redirect</p></a>
-  <!--<main class="container">
-  <div class="bg-body-tertiary p-5 rounded mt-3">
-    <h1>login sucess</h1>
-    <p class="lead">login success dude......</p>
-  </div>
-</main>-->
+    if(!$login) {
+        echo"log=$result";
+        if($result) {
+            echo"sup dude";
+            ?>
+            
+            <script>
+	window.location.href = "<?=get_config('base_path');?>"
+</script>
+
+
+  <?} else {
+      echo "out-$login";
+      ?>
+    <main class="container">
+      <div class="bt-light p-5 rounded mt-3">
+        <h1>login failed</h1>
+        <p class="lead">try logging in again</p>
+      </div>
+    </main>
+   <?php
+  }?>
 
 <?php
 
-}else{
-    ?>
-
+    } else {
+        echo "loop and";
+        ?>
 <main class="form-signin w-100 m-auto">
   <form method="post" action="login.php">
     <img class="mb-4" src="https://academy.selfmade.ninja/assets/brand/logo-text.svg" alt="Not found" height="60">

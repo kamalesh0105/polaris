@@ -13,6 +13,12 @@
             <li><a href="#" class="text-white">Follow on Twitter</a></li>
             <li><a href="#" class="text-white">Like on Facebook</a></li>
             <li><a href="#" class="text-white">Email me</a></li>
+            <?if(Session::isauthenticated()){?>
+            <li><a href="?logout" class="text-white">logout</a></li>
+            <?}else{?>
+              <li><a href="/htdocs/login.php" class="text-white">login</a></li>
+              <?}?>
+
           </ul>
         </div>
       </div>

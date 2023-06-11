@@ -3,7 +3,8 @@
 use Session as GlobalSession;
 
 class Session{
-    public $user;
+    public static $user=null;
+    public static $usersession=null;
 
     public static function start(){
             session_start();
@@ -12,7 +13,7 @@ class Session{
         session_unset();   
      }
     public static function destroy(){
-        session_destroy();        
+        session_destroy();  
     }
     public static function set($key,$value){
 
@@ -34,6 +35,7 @@ class Session{
     public static function get($key,$default=false){
         if(Session::isset($key)){
             //echo "Session has set";
+            //echo "testsesss- $_SESSION[$key]";
             return $_SESSION[$key];
         }else{
             return $default;
@@ -61,9 +63,23 @@ class Session{
 
     }
     public static function isauthenticated(){
-        return true;
-    }
+if(is_object(Session::getusersession())) {
+    return Session::getusersession()->isValid();
+}else{
+    return  false;
 }
+
+    }
+    public static function getUser(){
+        return Session::$user;
+    }   
+    public static function getusersession(){
+        return Session::$usersession;
+    }
+
+
+}
+
 
 
 

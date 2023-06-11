@@ -4,7 +4,7 @@
     <h1 class="fw-light"> What are you upto ?</h1>
     <p class="lead text-body-secondary">share a photo that talks about it.</p>
     <p>
-      <a href="#" class="btn btn-primary my-2">upload</a>
+      <a href="#"class="btn btn-primary my-2">upload</a>
       <a href="#" class="btn btn-secondary my-2">clear</a>
     </p>
   </div>
