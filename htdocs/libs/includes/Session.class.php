@@ -77,7 +77,12 @@ if(is_object(Session::getusersession())) {
         return Session::$usersession;
     }
 
-
+public static function ensurelogin(){
+    if(!Session::isauthenticated()){
+        header("Location: /htdocs/login.php");
+        die();
+    }
+}
 }
 
 

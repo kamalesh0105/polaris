@@ -27,7 +27,7 @@ class User
     }
         public function __call($name, $arguments)
         {
-            echo "\ncall got called";
+           // echo "\ncall got called";
             $property=preg_replace("/[^0-9a-zA-Z]/","",substr($name,3));
             $property=strtolower(preg_replace('/\B([A-Z])/','_$1',$property));
             //echo "\n".$property;
@@ -45,17 +45,18 @@ class User
         }
     public function __construct($username)
     {
-        echo"Constructor got called\n";
+        //echo"Constructor got called,$username";
         $this->conn=Database::get_connection();
         $this->username=$username;
         $this->id=null;
         //me
-        $query="SELECT * FROM `auth` WHERE `username` = '$username'OR `id` = '$username' OR `email` = '$username' LIMIT 1";
+        $query="SELECT * FROM `auth` WHERE `username` = '$username' OR `id` = '$username' OR `email` = '$username' LIMIT 1";
         $result=$this->conn->query($query);
        if($result->num_rows){
         $data=$result->fetch_assoc();
+        //print_r($data);
         $this->id=$data['id'];
-        echo "\nid=$this->id";
+        //echo "\nid=$this->id";
        }else{
         throw new Exception("Username does not exists...");
        }
@@ -90,11 +91,11 @@ private function _get($var){
 if(!$this->conn) {
     $this->conn=Database::get_connection();
 }
-echo "\nget got called:$var";
-    $sql="SELECT $var FROM `users` WHERE id='$this->id'";
+//echo "\nget got called:$var";
+    $sql="SELECT $var FROM `auth` WHERE id='$this->id'";
     $result=$this->conn->query($sql);
     if($result->num_rows){
-        echo "\ninside condition";
+        //echo "\ninside condition";
         $data=$result->fetch_assoc();
         return $data["$var"];
     }else{
@@ -111,7 +112,7 @@ if(!$this->conn) {
 }
 
 echo"inside setdata function-2,$var,$data";
-    $sql="UPDATE `users` SET $var='$data' WHERE id='$this->id'";
+    $sql="UPDATE `auth` SET $var='$data' WHERE id='$this->id'";
     if($this->conn->query($sql)){
        //echo "inside condition";
         return true;

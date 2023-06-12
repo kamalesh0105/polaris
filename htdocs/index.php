@@ -12,7 +12,7 @@ if(isset($_GET['logout'])){
         }
     }
     Session::destroy();
-    header("Location: /htdocs/index.php");
+    header("Location: /htdocs/");
     die();  
 
 }else{

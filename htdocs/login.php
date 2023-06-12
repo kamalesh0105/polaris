@@ -1,6 +1,12 @@
 <?php
 include "libs/load.php";
-Session::renderpage();
+if(Session::isauthenticated()) {
+    header("Location: /htdocs/");
+    die();
+    
+}else{
+    Session::renderpage();
+}
 //echo __DIR__;
 
 

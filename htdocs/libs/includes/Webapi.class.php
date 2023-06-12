@@ -36,7 +36,7 @@ class webapi{
      Session::start();
 if(Session::isset("session_token")) {
     try {
-        echo "webapi sucess";
+        //echo "webapi sucess";
         //echo $_SESSION['user_token'];
         Session::$usersession=Usersession::authorize(Session::get('session_token'));
        // Session::set('user_session',$session);

@@ -19,16 +19,16 @@ class Usersession
             $token=md5(rand(0, 99999).$ip.$agent.time());
 
             $conn=Database::get_connection();
-            echo "id===$user->id";
+            //echo "id===$user->id";
             $sql=" INSERT INTO `session` (`uid`, `token`,`login_time`, `ip`,`user_agent`,`active`)
              VALUES ('$user->id','$token',now(),'$ip','$agent','1')";
             $result1=$conn->query($sql);
             if($result1) {
                 Session::set('session_token', $token);
-                echo"token-$token";
+               // echo"token-$token";
                 return $token;
 
-            } else {echo"false now";
+            } else {//echo"false now";
                 return false;
             }
             //new
@@ -45,17 +45,17 @@ class Usersession
     {
         try {
             //echo"temp-verify";
-            echo"/n$token";
+            //echo"/n$token";
             $session= new Usersession($token);
-            echo"temp-verify";
+            //echo"temp-verify";
             
             
             if(isset($_SERVER['REMOTE_ADDR']) and isset($_SERVER["HTTP_USER_AGENT"])) {
                 if($_SERVER['REMOTE_ADDR']==$session->get_ip()) {
                     if($_SERVER["HTTP_USER_AGENT"]==$session->get_useragent()) {
-                        echo"temp-verify";
+                       // echo"temp-verify";
                         Session::$user = $session->getUser();
-                        echo"temp-verify";
+                        //echo"temp-verify";
                         return $session;
                     }throw new Exception("User agent doesn't match");
 
@@ -72,7 +72,7 @@ class Usersession
 
 public function __construct($token)
 {
-    echo "Construtor got called";
+   // echo "Construtor got called";
     $this->conn=Database::get_connection();
     $this->token=$token;
     $this->data=null;
@@ -92,8 +92,8 @@ public function __construct($token)
 }
  public function getuser()
  {
-
-     return new user($this->id);
+    //echo("tt-$this->id");
+     return new user($this->data['uid']);
  }
 
 public function get_ip()
@@ -149,7 +149,7 @@ public function isValid()
             //echo"true";
             return true;
         } else {
-            echo"false";
+           // echo"false";
             return false;
         }
     } else {
