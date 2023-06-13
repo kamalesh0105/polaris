@@ -59,7 +59,7 @@ class User
         //echo "\nid=$this->id";
        }else{
         throw new Exception("Username does not exists...");
-       }
+       } 
 
     }
 
