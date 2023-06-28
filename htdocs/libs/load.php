@@ -4,6 +4,7 @@ include_once "includes/user.class.php";
 include_once "includes/Session.class.php";
 include_once "includes/usersession.class.php";
 include_once "includes/Webapi.class.php";
+include_once "includes/Post.class.php";
 global $_site_config;
 //echo(__DIR__);
 echo $_SERVER['DOCUMENT_ROOT'];
