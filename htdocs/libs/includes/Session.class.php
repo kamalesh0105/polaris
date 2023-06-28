@@ -79,6 +79,7 @@ if(is_object(Session::getusersession())) {
 
 public static function ensurelogin(){
     if(!Session::isauthenticated()){
+        Session::set("_redirect",$_SERVER['REQUEST_URI']);
         header("Location: /htdocs/login.php");
         die();
     }

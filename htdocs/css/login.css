@@ -48,3 +48,7 @@ body {
 .path-root {
     color: yellow;
 }
+
+.btn-link {
+    color: yellow !important;
+}

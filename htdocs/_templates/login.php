@@ -1,5 +1,5 @@
 <?php
-$login=true;
+$login_page=true;
 //Session::set('mode','web');
 //Session::set('test','websksjs');
 if(isset($_POST['username']) and isset($_POST['password'])){
@@ -7,30 +7,38 @@ if(isset($_POST['username']) and isset($_POST['password'])){
   $password=$_POST['password'];
   $result=Usersession::authenticate($username,$password);
  // echo 'res'.$result;
-  $login=false;
+  $login_page=false;
 }
 //echo $username;
 //$result=verify_credentials($username,$password);
-    if(!$login) {
-        echo"log=$result";
+    if(!$login_page) {
+        //echo"log=$result";
         if($result) {
-            echo"sup dude";
+            //echo"sup dude";
+            $should_direct=Session::get("_redirect");
+            $redirect_to=get_config('base_path');
+            if(isset($should_direct)){
+              $redirect_to=$should_direct;
+              Session::set("_redirect","false");
+            }
             ?>
             
             <script>
-	window.location.href = "<?=get_config('base_path');?>"
+	window.location.href = "<?=$redirect_to;?>"
 </script>
 
 
   <?} else {
-      echo "out-$login";
+     // echo "out-$login";
       ?>
-    <main class="container">
+    <!-- <main class="container">
       <div class="bt-light p-5 rounded mt-3">
-        <h1>login failed</h1>
-        <p class="lead">try logging in again</p>
-      </div>
-    </main>
+        <h1>login failed</h1><p class="lead">please <a class="lead-ank" href="/login.php">try again</a>
+      </div></p>
+    </main> -->
+    <script>
+	window.location.href = "login.php?error"
+</script>
    <?php
   }?>
 
@@ -53,6 +61,12 @@ if(isset($_POST['username']) and isset($_POST['password'])){
       <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" fdprocessedid="lbqjnc" required>
       <label for="floatingPassword">Password</label>
     </div>
+    <?
+if(isset($_GET['error'])) {?>
+  <div class="alert alert-danger" role="alert">
+ Invlaid Credentials
+</div>
+<?}?>
 
     <div class="checkbox mb-3">
       <label class="rem-me">
@@ -60,6 +74,7 @@ if(isset($_POST['username']) and isset($_POST['password'])){
       </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary hvr-wobble-bottom" type="submit" fdprocessedid="p44mr9" >Sign in</button>
+    <a href="signup.php" class="w-100 btn btn-link">Not registered ?Signup now! </a>
   </form>
 </main>
 

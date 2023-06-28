@@ -28,10 +28,15 @@ function get_config($key,$default=null){
 
 }
 
-function load_template($name){
+function load_template($name,$param=null){
     #print("including ".__DIR__."/../_templates/$name.php");
     #print(__FILE__);
+if(!(isset($param))) {
     include $_SERVER["DOCUMENT_ROOT"].get_config('base_path')."_templates/$name.php";
+}else{
+    include $_SERVER["DOCUMENT_ROOT"].get_config('base_path')."_templates/$param/$name.php";
+}
+
 }
 
 function verify_credentials($username,$password){

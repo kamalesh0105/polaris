@@ -4,7 +4,6 @@ class User
     public $conn=false;
     public $username;
     public $id;
-    public $data;
 
     public static function signup($username, $password, $email, $phone)
     {
@@ -28,16 +27,15 @@ class User
     }
         public function __call($name, $arguments)
         {
-            //print_r($arguments);
            // echo "\ncall got called";
             $property=preg_replace("/[^0-9a-zA-Z]/","",substr($name,3));
             $property=strtolower(preg_replace('/\B([A-Z])/','_$1',$property));
             //echo "\n".$property;
             if(substr($name,0,3)=='get'){
-                return $this->_get($property,$arguments[0]);
+                return $this->_get($property);
 
-            }elseif(substr($name,0,3)=='set'){  
-                return $this->_set($property,$arguments[0],$arguments[1]);
+            }elseif(substr($name,0,3)=='set'){
+                return $this->_set($property,$arguments[0]);
 
             }else{
                 throw new Exception(" User::__call()->$name function not available");
@@ -89,52 +87,32 @@ class User
 
     }
 
-private function _get($var,$table=null){
-        $query='id';
- 
-        if(!$this->conn) {
-            $this->conn=Database::get_connection();
-        }
-        //echo "\nget got called:$var";
-        if(!(isset($table))) {
-            $sql="SELECT $var FROM `auth` WHERE id='$this->id'";
-        }else{
-            echo"place 2 ,$var,$table,$this->id";
-            if($table=='session'){
-                $query='uid';
-            }
-            $sql="SELECT `$var` FROM `$table` WHERE `$query` = '$this->id' LIMIT 1";
-
-            //$sql="SELECT `$var` FROM `$table` WHERE `id` ='$this->id' LIMIT 1";
-
-        }   
-        $result=$this->conn->query($sql);
-        if($result->num_rows) {
-            //echo "\ninside condition";
-            $data=$result->fetch_assoc();
-           return $data["$var"];
-        } else {
-            return null;
-        }
+private function _get($var){
+if(!$this->conn) {
+    $this->conn=Database::get_connection();
+}
+//echo "\nget got called:$var";
+    $sql="SELECT $var FROM `auth` WHERE id='$this->id'";
+    $result=$this->conn->query($sql);
+    if($result->num_rows){
+        //echo "\ninside condition";
+        $data=$result->fetch_assoc();
+        return $data["$var"];
+    }else{
+        return null;
     }
+}
 
 
-
-private function _set($var,$data,$table=null){
+private function _set($var,$data){
 if(!$this->conn) {
    // echo"inside setdata function-1";
     $this->conn=Database::get_connection();
    
 }
 
-//echo"inside setdata function-2,$var,$data";
-
-if(!(isset($table))) {
+echo"inside setdata function-2,$var,$data";
     $sql="UPDATE `auth` SET $var='$data' WHERE id='$this->id'";
-}else{
-    $sql="UPDATE `$table` SET $var='$data' WHERE id='$this->id'";
-
-}
     if($this->conn->query($sql)){
        //echo "inside condition";
         return true;
