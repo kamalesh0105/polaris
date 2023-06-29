@@ -1,29 +1,10 @@
 <?php
-
+include_once __DIR__."/../trait/SQLGetterSetter.trait.php";
 class Post
 {
     public $id;
     public $conn;
-    public function __call($name, $arguments)
-    {
-        //print_r($arguments);
-       // echo "\ncall got called";
-        $property=preg_replace("/[^0-9a-zA-Z]/","",substr($name,3));
-        $property=strtolower(preg_replace('/\B([A-Z])/','_$1',$property));
-        //echo "\n".$property;
-        if(substr($name,0,3)=='get'){
-            return $this->_get($property);
-
-        }elseif(substr($name,0,3)=='set'){  
-            return $this->_set($property,$arguments[0]);
-
-        }else{
-            throw new Exception(" User::__call()->$name function not available");
-        }
-
-
-    }
-
+    use SQLGetterSetter;
     public static function registerPost($text, $image_tmp)
     {
         if(isset($_POST["$image_tmp"])) {
@@ -54,6 +35,7 @@ class Post
 
     {
         $this->id=$id;
+        $this->table='posts';
         $this->conn=Database::get_connection();
         $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
 
@@ -61,49 +43,8 @@ class Post
 
 
 
-    private function _get($var)
-    {
+   
 
-        if(!$this->conn) {
-            $this->conn=Database::get_connection();
-        }
-            $sql="SELECT `$var` FROM `posts` WHERE `id` = '$this->id' LIMIT 1";
-
-            //$sql="SELECT `$var` FROM `$table` WHERE `id` ='$this->id' LIMIT 1";
-
-        
-        $result=$this->conn->query($sql);
-        if($result->num_rows) {
-            //echo "\ninside condition";
-            $data=$result->fetch_assoc();
-            return $data["$var"];
-        } else {
-            return null;
-        }
-    }
-
-
-
-    private function _set($var, $data)
-    {
-        if(!$this->conn) {
-            $this->conn=Database::get_connection();
-
-        }
-        $sql="UPDATE `auth` SET $var='$data' WHERE id='$this->id'";
-       
-        if($this->conn->query($sql)) {
-            //echo "inside condition";
-            return true;
-
-        } else {
-            return 'sdsad';
-        }
-
-
-
-
-    }
 
 }
 

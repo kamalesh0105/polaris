@@ -1,16 +1,22 @@
 <?php
-include "photogram/libs/load.php";
+//include "photogram/libs/load.php";
 $signup=false;?>
 <div class="db-data">
-  <?print_r($_POST);
+  <?
 if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email']) and isset($_POST['phone'])) {
+    echo"inside";
     $username=$_POST['username'];
     $password=$_POST['password'];
     $email=$_POST['email'];
     $phone=$_POST['phone'];
-    echo "into_db";
-    $error=user::signup($username,$password,$email,$phone);
-    $signup=true;
+    if($username!=null and $password!=null) {
+        $error=user::signup($username, $password, $email, $phone);
+        $signup=true;
+    } else {?>
+   <script>
+	window.location.href = "signup.php?signup_error"
+</script><?php
+    }
 }
 ?>
 </div>
@@ -18,20 +24,16 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
 <?if($signup){
   echo"signup-true";
   if(!$error){
+    Session::destroy();
     ?>
-    <main class="container">
-  <div class="bg-body-tertiary p-5 rounded mt-3">
-    <h1>signup sucess</h1>
-    <p class="lead">Now you can <a href="<?get_config('base_path')?>login.php">login...</a></p>
-  </div>
-</main>
+    <script>
+window.location.href = "login.php"
+</script>
   <?}else{?>
-    <main class="container">
-  <div class="bg-body-tertiary p-5 rounded mt-3">
-    <h1>signup failed</h1>
-    <p class="lead">something went wrong....<?=$error?></p>
-  </div>
-</main>
+    <script>
+	window.location.href = "signup.php?signup_error"
+</script>
+    
 <?}?>
 <?}else{?>
 
@@ -66,6 +68,11 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
+    <?if(isset($_GET['signup_error'])){?>
+      <div class="alert alert-danger" role="alert" style="height:50px;">
+      Fill all the above details
+     </div>
+    <?}?>
     <button class="w-100 btn btn-lg btn-primary hvr-wobble-bottom" type="submit" fdprocessedid="p44mr9" >Sign in</button>
   </form>
 </main>

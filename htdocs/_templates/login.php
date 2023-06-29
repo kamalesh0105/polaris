@@ -45,7 +45,6 @@ if(isset($_POST['username']) and isset($_POST['password'])){
 <?php
 
     } else {
-        echo "loop and";
         ?>
 <main class="form-signin w-100 m-auto">
   <form method="post" action="login.php">

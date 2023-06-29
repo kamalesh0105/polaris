@@ -1,4 +1,5 @@
 <?
+
 class Usersession
 {
     public $id;
@@ -86,7 +87,7 @@ public function __construct($token)
         $this->data=$data;
         $this->uid=$data['uid'];
     } else {
-        throw new Exception("Sesion is Invlaid");
+        throw new Exception("Session is Invlaid");
 
     }
 }
@@ -114,10 +115,8 @@ public function isActive()
 }
 public function remove_session()
 {
-    echo "status";
 if(isset($this->data['id'])) {
     $id=$this->data['id'];
-    echo"rmsess:$id";
     if(!$this->conn) {
         $this->conn =Database::get_connection();
     }

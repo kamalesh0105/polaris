@@ -7,10 +7,14 @@
 // print_r($_GET);
 // print_r($_FILES);
 // print_r($_COOKIE);
-include "libs/load.php";
-$p=new Post(1);
-print($p->getimage_uri());
-
+// include "libs/load.php";
+// $p=new Post(1);
+// print($p->getimage_uri());
+$c='';
+if($c!=null){
+    echo"true";}else{
+        echo "trie";
+    }
 
 ?>
 

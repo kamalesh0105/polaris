@@ -1,10 +1,11 @@
 <?
-
 use Session as GlobalSession;
+
 
 class Session{
     public static $user=null;
     public static $usersession=null;
+   
 
     public static function start(){
             session_start();
