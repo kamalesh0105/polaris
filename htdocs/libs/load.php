@@ -2,20 +2,20 @@
 include_once "includes/Database.class.php";
 include_once "includes/user.class.php";
 include_once "includes/Session.class.php";
-include_once "includes/usersession.class.php";
 include_once "includes/Webapi.class.php";
 include_once "includes/Post.class.php";
 include_once "trait/SQLGetterSetter.trait.php";
+include_once "includes/usersession.class.php";
 global $_site_config;
 //echo(__DIR__);
-echo $_SERVER['DOCUMENT_ROOT'];
+//echo $_SERVER['DOCUMENT_ROOT'];
 //$_site_config_path=dirname(is_link($_SERVER['DOCUMENT_ROOT']) ? readlink($_SERVER['DOCUMENT_ROOT']) : $_SERVER['DOCUMENT_ROOT'])."/dbconfig.json";
 //echo $_site_config_path;
 //$_site_config=file_get_contents($_site_config_path);
 //echo $_site_config;
 
-$wapi= new webapi();
-echo "new";
+ $wapi= new webapi();
+ //echo "new";
 $wapi->initiate_session();
 
 function get_config($key,$default=null){
@@ -41,13 +41,13 @@ if(!(isset($param))) {
 
 }
 
-function verify_credentials($username,$password){
-    if($username =="user@gmail.com" and $password=="root"){
-        return true;
-    }else{
-        return false;
-    }
-}
+// function verify_credentials($username,$password){
+//     if($username =="user@gmail.com" and $password=="root"){
+//         return true;
+//     }else{
+//         return false;
+//     }
+// }
 
 
 

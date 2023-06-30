@@ -7,21 +7,26 @@ class Post
     use SQLGetterSetter;
     public static function registerPost($text, $image_tmp)
     {
-        if(isset($_POST["$image_tmp"])) {
+        if(is_file($image_tmp) and exif_imagetype($image_tmp)!==False) {
             $author=Session::getUser()->getEmail();
-            $image_name=md5($author.time())."jpg"; #TODO //change the id gen algorithm
-            $image_path=get_config("uploaf_path")."$image_name";
+            $image_name=md5($author.time()).image_type_to_extension( exif_imagetype($image_tmp));//change the id gen algorithm
+            $image_path=get_config("upload_path")."$image_name";
+            //echo"$author=$image_name=$image_path";
             if(move_uploaded_file($image_tmp, $image_path)) {
-                $insert_cmd="INSERT INTO `posts` (`posttext`, `imageuri`, `likecount`, `uploadtime`, `owner`)
-    VALUES ('$text', 'https://c8.alamy.com/comp/RJR7N5/random-objects-on-black-background-vector-illustration-RJR7N5.jpg', '0', now(), '$author')";
+                $image_uri="?name=$image_name";
+                $insert_cmd="INSERT INTO `posts` (`post_text`,`multiple_image`, `image_uri`, `like_count`, `upload_time`, `owner`)
+    VALUES ('$text',0, '$image_uri', '0', now(), '$author')";
+                //echo "$image_uri----$insert_cmd";   
                 $db=Database::get_connection();
                 if($db->query($insert_cmd)) {
                     $id=mysqli_insert_id($db);
                     return new Post($id);
                 } else {
+                    throw new Exception("sql error");
                     return false;
                 }
             } else {
+                echo "failed";
                 return false;
             }
         } else {

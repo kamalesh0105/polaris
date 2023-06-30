@@ -1,9 +1,12 @@
+<?
+include "libs/load.php";     
+$img_path=get_config('upload_path');
+$filename=$img_path.$_GET['name']; 
+$obj = fopen($filename, "rb"); 
+$contents = fread($obj, filesize($filename)); 
+fclose($obj); 
+header("content-type:".mime_content_type($filename)); 
+header("content-Length:".filesize($filename));
+echo $contents;
 
-<pre><?
-//print_r($_SERVER);
-include "libs/load.php";
-?><br></br><?
-$val=Session::$user->getip('session');
-echo("out=$val");
 ?>
-</pre>

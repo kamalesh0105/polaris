@@ -4,5 +4,5 @@
     "db_pass": "alpha",
     "db_name": "photogram",
     "base_path": "/htdocs/",
-    "upload_path": "/var/img/"
+    "upload_path": "/home/geek/polaris_uploads/"
 }

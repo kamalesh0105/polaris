@@ -8,7 +8,7 @@ class Usersession
     public $token;
     public $conn=null;
 
-
+    
     public static function authenticate($name, $pass)
     {
         $username=User::login($name, $pass);
