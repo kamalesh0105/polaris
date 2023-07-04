@@ -11,8 +11,8 @@ trait SQLGetterSetter
         $property=strtolower($property);
         //echo "\n".$property;
         if(substr($name, 0, 3)=='get') {
-        if(isset($arguments)) {
-            return $this->_get($property, $arguments[0]);
+        if(!isset($arguments)) {
+        return $this->_get($property, $arguments[0]);
         } else{
             return $this->_get($property);
         }

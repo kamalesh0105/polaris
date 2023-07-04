@@ -1,13 +1,18 @@
 RewriteEngine On
+#RewriteBase /
 
-
-RewriteRule ^/?images/([^/]+)?$images.php?name=$1 [L,QSA,NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /htdocs/
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^([^/.]+)$ $1.php [L]
+# RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{DOCUMENT_ROOT}/htdocs/%{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ /$1.php [L,QSA]
+
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ /htdocs/index.php [L]
+
 
 
 

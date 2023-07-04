@@ -34,6 +34,14 @@ class Post
         }
     }
 
+    public static function getAllPosts(){
+    $db=Database::get_connection();
+    $sql="SELECT * FROM `posts` ORDER BY `upload_time` LIMIT 50";
+    $result=$db->query($sql);
+    return iterator_to_array($result);
+
+}
+    
 
 
     public function __construct($id)
@@ -42,7 +50,7 @@ class Post
         $this->id=$id;
         $this->table='posts';
         $this->conn=Database::get_connection();
-        $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
+       // $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
 
     }
 
