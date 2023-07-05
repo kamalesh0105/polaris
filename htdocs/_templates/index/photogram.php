@@ -1,30 +1,41 @@
 <div class="album py-5 bg-body-tertiary">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <div class="container">
+    <div class="row" data-masonry='{" percentPosition": true }'>
       <?
-      $posts=Post::getAllPosts();
-foreach($posts as $post) {
-    $p=new Post($post[0]['id']);
+      $posts = Post::getAllPosts();
 
-    ?>
+      use Carbon\Carbon;
+
+      foreach ($posts as $post) {
+        $p = new Post($post['id']);
+        $img_path = get_config('upload_path') . $p->getimage_uri();
+        $upload_time = Carbon::parse($p->getupload_time());
+        $upload_time_string = $upload_time->diffForHumans();
+
+
+      ?>
         <div class="col">
           <div class="card shadow-sm">
-            <img src="<?$p->getimage_uri();?>" width="100%" height="100%">
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+            <img class="bd-placeholder-img card-img-top" src="<?= "images.php/?name=" . $img_path; ?>" width="100%" height="100%">
             <div class="card-body">
-              <p class="card-text"><?$p->getpost_text();?></p>
+              <p class="card-text"><?= $p->getpost_text(); ?></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">like</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">share</button>
+                  <button type="button" class="btn btn-sm btn-outline-primary">like</button>
+                  <button type="button" class="btn btn-sm btn-outline-success">share</button>
+                  <?
+                  $owner = $p->getowner();
+                  if (Session::isOwnerof($owner)) { ?>
+                    <button type="button" class="btn btn-sm btn-outline-danger">delete</button>
+                  <? } ?>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="text-body-secondary"><?= $upload_time_string ?></small>
               </div>
             </div>
           </div>
         </div>
-        <?php
-}?>  
-      </div>
+      <?php
+      } ?>
     </div>
   </div>
+</div>

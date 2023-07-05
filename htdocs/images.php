@@ -1,17 +1,15 @@
 <?
-
-// $filename=$_GET['name'];
-// $path=get_config('upload_path');
-// $img_path=$path.$filename;
-include_once "libs/load.php";
-// $img_pat=get_config('upload_path');
-// $img_path=$img_pat.$_GET['name'];
-$img_path="/home/geek/polaris_uploads/sunflower.png";
-$obj = fopen($img_path, "rb"); 
-$contents = fread($obj, filesize($img_path)); 
-fclose($obj); 
-header("content-type:".mime_content_type($img_path)); 
-header("content-Length:".filesize($img_path));
-echo $contents;
-
-?>
+//include "libs/load.php";
+//$img_path = get_config('upload_path');
+//$img_path = "/home/geek/polaris_uploads/";
+$filename = $_GET['name'];
+$obj = fopen($filename, "rb");
+if ($obj == true) {
+    $contents = fread($obj, filesize($filename));
+    fclose($obj);
+    header("content-type:" . mime_content_type($filename));
+    header("content-Length:" . filesize($filename));
+    echo $contents;
+} else {
+    echo "Some error";
+}
