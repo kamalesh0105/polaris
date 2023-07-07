@@ -1,14 +1,7 @@
 <?
-include "libs/load.php";
-$a = null;
-if (isset($a)) {
-    echo "set";
+$a = [];
+if ($a == null) {
+    echo "null";
 } else {
-    echo "not set";
+    echo "full";
 }
-$pos = Post::getAllPosts();
-print_r($pos);
-$p = new Post($pos[0]['id']);
-$val = $p->getpost_text();
-$sup = $p->getimage_uri();
-echo "$val,$sup";

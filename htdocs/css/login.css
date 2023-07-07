@@ -1,54 +1,52 @@
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .ankor-link,
 .link {
-    color: floralwhite;
+  color: floralwhite;
 }
-
 
 .fw-normal,
 .mb-1,
 .rem-me,
 .redirect {
-    color: lightgray;
+  color: lightgray;
 }
 
 body {
-    background-image: url("img/valley1.jpg");
+  background-image: url("img/valley1.jpg");
 }
 
 .form-signin {
-    max-width: 330px;
-    padding: 15px;
+  max-width: 330px;
+  padding: 15px;
 }
 
 .form-signin .form-floating:focus-within {
-    z-index: 2;
+  z-index: 2;
 }
 
 .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .path-root {
-    color: yellow;
+  color: yellow;
 }
 
 .btn-link {
-    color: yellow !important;
+  color: yellow !important;
 }
