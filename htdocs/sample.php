@@ -1,7 +1,2 @@
 <?
-$a = [];
-if ($a == null) {
-    echo "null";
-} else {
-    echo "full";
-}
+echo $_SERVER['DOCUMENT_ROOT'];

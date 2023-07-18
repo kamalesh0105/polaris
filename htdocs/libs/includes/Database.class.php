@@ -36,7 +36,3 @@ if ($connection->connect_error) {
 }
 
 }
-
-
-
-?>

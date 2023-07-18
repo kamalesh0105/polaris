@@ -4,9 +4,11 @@ include_once "includes/Database.class.php";
 include_once "includes/user.class.php";
 include_once "includes/Session.class.php";
 include_once "includes/Webapi.class.php";
-include_once "includes/Post.class.php";
+include_once "app/Post.class.php";
 include_once "trait/SQLGetterSetter.trait.php";
 include_once "includes/usersession.class.php";
+include_once "includes/API.class.php";
+include_once 'includes/REST.class.php';
 
 global $_site_config;
 //echo(__DIR__);

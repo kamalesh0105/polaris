@@ -6,7 +6,7 @@ trait SQLGetterSetter
     public function __call($name, $arguments = null)
     {
         //print_r($arguments);
-        // echo "\ncall got called";
+        //echo "\ncall got called";
         // $property=preg_replace("/[^0-9a-zA-Z]/", "", substr($name, 3));
         // $property=strtolower(preg_replace('/\B([A-Z])/', '_$1', $property));
         $property = substr($name, 3);

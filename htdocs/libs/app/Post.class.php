@@ -53,4 +53,34 @@ class Post
         // $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
 
     }
+    public static function deletePOst($imgId)
+    {
+        $db = Database::get_connection();
+        $sql = "DELETE FROM `posts`
+        WHERE ((`id` = '$imgId'))";
+        $result = $db->query($sql);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function getMyPosts()
+    {
+
+        $db = Database::get_connection();
+        $owner = Session::$user->getemail();
+        //echo $owner;
+        $sql = "SELECT * FROM `posts` WHERE `owner`='$owner' LIMIT 20";
+        $result = $db->query($sql);
+        return iterator_to_array($result);
+    }
+
+
+
+
+
+
+    //code ends here
 }
