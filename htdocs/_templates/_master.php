@@ -39,6 +39,8 @@
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
   <script src="/htdocs/js/app.min.js"></script>
   <script src="/htdocs/js/dialog.js"></script>
+  <script src="/htdocs/js/toast.js"></script>
+  <script src="/htdocs/js/demo.js"></script>
 </body>
 
 </html>

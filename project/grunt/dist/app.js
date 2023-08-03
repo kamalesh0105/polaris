@@ -1,4 +1,10 @@
-/*made by jarvis*/var $grid = $("#masonry-area").masonry({
+/*made by jarvis*/$("#liveToastBtn").on("click", function () {
+  var el = $("#liveToast");
+  $(el).append();
+  new bootstrap.Toast(el).show();
+});
+
+var $grid = $("#masonry-area").masonry({
   // options...
   //   itemselector: ".col",
   //   columnWidthL: ".col",
@@ -20,6 +26,16 @@ $(".btn-delete").on("click", function () {
         $(`#post-${post_id}`).remove();
         //console.log($(this));
         $(event.data.modal).modal("hide");
+        t = new Toast(
+          "notification",
+          "success",
+          "delete success",
+
+          {
+            placement: "bottom-right",
+          }
+        );
+        t.show();
       },
     },
     {
@@ -31,6 +47,13 @@ $(".btn-delete").on("click", function () {
     },
   ]);
   d.show();
+});
+
+$(document).ready(function () {
+  t = new Toast("ignore me", "welcome", "hey there?", {
+    placement: "bottom-right",
+  });
+  t.show();
 });
 
 //# sourceMappingURL=app.js.map

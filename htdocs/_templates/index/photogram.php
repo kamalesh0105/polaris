@@ -28,7 +28,7 @@
                     <?php
                     $owner = $p->getowner();
                     if (Session::isOwnerof($owner)) { ?>
-                      <button type="button" class="btn btn-sm btn-outline-danger btn-delete">delete</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger btn-delete ">delete</button>
                     <?php } ?>
                   </div>
                   <small class="text-body-secondary"><?= $upload_time_string ?></small>

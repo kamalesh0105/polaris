@@ -20,6 +20,16 @@ $(".btn-delete").on("click", function () {
         $(`#post-${post_id}`).remove();
         //console.log($(this));
         $(event.data.modal).modal("hide");
+        t = new Toast(
+          "notification",
+          "success",
+          "delete success",
+
+          {
+            placement: "bottom-right",
+          }
+        );
+        t.show();
       },
     },
     {
@@ -31,4 +41,11 @@ $(".btn-delete").on("click", function () {
     },
   ]);
   d.show();
+});
+
+$(document).ready(function () {
+  t = new Toast("ignore me", "welcome", "hey there?", {
+    placement: "bottom-right",
+  });
+  t.show();
 });
