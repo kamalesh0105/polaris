@@ -1,0 +1,17 @@
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|webp|gif|html|htm|xml|txt|xsl|css)$">
+    Header set Cache-Control "max-age=31536050"
+</FilesMatch>
+
+ErrorDocument 404 "<H1>Some error, contact ErrorDocument</H1>"
+ErrorDocument 500 "<H1>Some error, contact administrator</H1>"
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^/?files/([^/]+)?$ files.php?name=$1 [L,QSA,NC]
+
+RewriteRule ^/?api/([^/]+)?$ api.php?rquest=$1 [L,QSA,NC]
+RewriteRule ^/?api/([^/]+)/(.+)?$ api.php?rquest=$2&namespace=$1 [L,QSA,NC]
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^/.]+)$ $1.php [L]

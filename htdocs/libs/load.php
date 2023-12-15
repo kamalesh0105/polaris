@@ -1,4 +1,7 @@
 <?php
+
+use function Laravel\Prompts\error;
+
 require "vendor/autoload.php";
 include_once "includes/Database.class.php";
 include_once "includes/user.class.php";
@@ -27,6 +30,7 @@ function get_config($key, $default = null)
     global $_site_config;
     $array = json_decode($_site_config, true);
     if (isset($array[$key])) {
+        // error_log($array[$key]);
         return $array[$key];
     } else {
         return $default;

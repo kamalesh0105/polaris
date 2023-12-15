@@ -2,6 +2,8 @@
 include_once __DIR__ . "/../trait/SQLGetterSetter.trait.php";
 class Post
 {
+
+    //* tO do : handle error while empty upload
     public $id;
     public $conn;
     use SQLGetterSetter;

@@ -1,9 +1,11 @@
 <?
-${basename(__FILE__)} = function () {
+${basename(__FILE__, '.php')} = function () {
 
+    echo "I got Called by API";
     $result = [
-        "success" => false,
+        "success" => True,
         "message" => "invalid request"
     ];
     $this->response($this->json($result), 200);
 };
+//echo "Its Me";

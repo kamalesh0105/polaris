@@ -1,0 +1,3 @@
+#TO Log the Document path on every page uncomment the code section in _head.php(Html class path root)
+#Strictly follow the Document Root While setting up reverse proxy or Apache Config file
+#
