@@ -23,7 +23,7 @@ module.exports = function (grunt) {
       },
       target: {
         files: {
-          "../../htdocs/css/style.css": ["dist/style.css"],
+          "../htdocs/css/style.css": ["dist/style.css"],
         },
       },
     },
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
           sourceMap: true,
         },
         files: {
-          "../../htdocs/js/app.min.js": ["dist/app.js"],
+          "../htdocs/js/app.min.js": ["dist/app.js"],
         },
       },
     },
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
           // options for each sub task
         },
         files: {
-          "../../htdocs/js/app.o.js": ["dist/app.js"],
+          "../htdocs/js/app.o.js": ["dist/app.js"],
         },
       },
     },

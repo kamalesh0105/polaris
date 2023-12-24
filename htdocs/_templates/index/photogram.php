@@ -11,8 +11,7 @@
           $p = new Post($post['id']);
           $img_path = get_config('upload_path') . $p->getimage_uri();
           $upload_time = Carbon::parse($p->getupload_time());
-          $upload_time_string = $upload_time->diffForHumans();
-      ?>
+          $upload_time_string = $upload_time->diffForHumans(); ?>
           <div class="col-lg-3 mb-4" id="post-<?= $post['id'] ?>">
             <div class="card">
               <img class="bd-placeholder-img card-img-top" src="<?= "images.php/?name=" . $img_path; ?>">

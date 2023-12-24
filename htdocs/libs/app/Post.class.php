@@ -57,6 +57,7 @@ class Post
     }
     public static function deletePOst($imgId)
     {
+        error_log("Delete post got called");
         $db = Database::get_connection();
         $sql = "DELETE FROM `posts`
         WHERE ((`id` = '$imgId'))";
@@ -64,6 +65,7 @@ class Post
         if ($result) {
             return true;
         } else {
+            error_log("Post Delete Error");
             return false;
         }
     }

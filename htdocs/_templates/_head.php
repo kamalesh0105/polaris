@@ -8,15 +8,16 @@
     <title>Photogram by me</title>
     <link href="<? get_config('base_path') ?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <div class="path-root">
-        <!-- <? print_r($_SERVER['DOCUMENT_ROOT']);
-                print_r($_SERVER['PHP_SELF']); ?>
-        <? if (file_exists($_SERVER['DOCUMENT_ROOT'] . get_config('base_path') . "css/" . basename($_SERVER['PHP_SELF'], ".php") . ".css")) {
-            echo "  ===>success" ?>
+        <? // print_r($_SERVER['DOCUMENT_ROOT']);
+
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . get_config('base_path') . "css/" . basename($_SERVER['PHP_SELF'], ".php") . ".css")) {
+            // echo "  ===>success" 
+        ?>
             <link href="<? get_config('base_path') ?>css/<?= basename($_SERVER['PHP_SELF'], ".php"); ?>.css" rel="stylesheet">
 
         <? } else {
             echo "  error";
-        } ?> -->
+        } ?>
     </div>
 
     <? //}else{echo"error";}

@@ -20,13 +20,17 @@ class API extends REST
     public function processApi()
     {
         $request = strtolower(trim($_REQUEST['rquest'])); //TODO: Check for IDOR here.
-        $func = basename($request);
+        $func = basename($request, '.php');
+        // error_log($request . $func . "api");
         if (!isset($_GET['namespace']) and (int)method_exists($this, $func) > 0) {
             $this->$func();
         } else {
+
             if (isset($_GET['namespace'])) {
-                $dir = $_SERVER['DOCUMENT_ROOT'] . '    /libs/api/' . $_GET['namespace'];
-                $file = $dir . '/' . $request . '.php';
+
+                $dir = $_SERVER['DOCUMENT_ROOT'] . 'libs/api/' . $_GET['namespace'];
+                $file = $dir . '/' . $func . '.php';
+                // error_log($request . "   " . $func . "  " .    "api" . $dir . $file);
                 if (file_exists($file)) {
                     include $file;
                     $this->current_call = Closure::bind(${$func}, $this, get_class());

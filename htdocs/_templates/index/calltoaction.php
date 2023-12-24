@@ -1,6 +1,5 @@
 <?
 
-use phpDocumentor\Reflection\PseudoTypes\True_;
 
 if (isset($_POST['post_text']) and isset($_FILES['post_image'])) {
   $image_tmp = $_FILES['post_image']['tmp_name'];

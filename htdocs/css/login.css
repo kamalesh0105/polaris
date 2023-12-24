@@ -1,3 +1,8 @@
+body {
+  background-image: url("img/valley.jpg");
+  background-size: cover;
+  background-position: center;
+}
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -16,10 +21,6 @@
 .rem-me,
 .redirect {
   color: lightgray;
-}
-
-body {
-  background-image: url("img/valley1.jpg");
 }
 
 .form-signin {

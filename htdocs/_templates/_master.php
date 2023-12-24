@@ -42,7 +42,7 @@
   <script src="/htdocs/js/dialog.js"></script>
   <script src="/htdocs/js/toast.js"></script>
   <script src="/htdocs/js/demo.js"></script> -->
-  <script src="/js/app.min.js"></script>
+  <script src="/js/app.js"></script>
   <script src="/js/dialog.js"></script>
   <script src="/js/toast.js"></script>
   <script src="/js/demo.js"></script>
