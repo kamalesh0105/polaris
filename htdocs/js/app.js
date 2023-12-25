@@ -16,8 +16,19 @@ $(".btn-delete").on("click", function () {
       name: "delete",
       class: "btn-danger",
       onClick: function (event) {
-        console.log(`Assume the Post ${post_id} is deleted`);
-        $(`#post-${post_id}`).remove();
+        console.log(`Assume this post ${post_id} is deleted i got called`);
+        $.post(
+          "/api/post/delete",
+          { id: post_id },
+          function (data, response, xhr) {
+            console.log(response);
+            console.log("API Data:" + data);
+            if (response == "success") {
+              var el = $(`#post-${post_id}`)[0];
+              $grid.masonry("remove", el).masonry("layout");
+            }
+          }
+        );
         //         //console.log($(this));
         $(event.data.modal).modal("hide");
         t = new Toast(
@@ -49,21 +60,21 @@ $(document).ready(function () {
   });
   t.show();
 });
-function ondeleteclicked(post_id) {
-  console.log(`Assume this post ${post_id} is deleted i got called`);
-  $.post(
-    "localhost/api/post/delete.php",
-    { id: post_id },
-    function (data, response, xhr) {
-      console.log(response);
-      console.log("API Data:" + data);
-      if (response == "success") {
-        var el = $(`#post-${post_id}`)[0];
-        $grid.masonry("remove", el).masonry("layout");
-      }
-    }
-  );
-}
+// function ondeleteclicked(post_id) {
+//   console.log(`Assume this post ${post_id} is deleted i got called`);
+//   $.post(
+//     "localhost/api/post/delete.php",
+//     { id: post_id },
+//     function (data, response, xhr) {
+//       console.log(response);
+//       console.log("API Data:" + data);
+//       if (response == "success") {
+//         var el = $(`#post-${post_id}`)[0];
+//         $grid.masonry("remove", el).masonry("layout");
+//       }
+//     }
+//   );
+// }
 // $(document).on("click", ".album .btn-delete", function () {
 //   post_id = $(this).parent().attr("data-id");
 //   d = new Dialog("Delete Post ,Are you sure deleting this post?");

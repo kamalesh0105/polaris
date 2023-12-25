@@ -55,10 +55,12 @@ class Post
         // $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
 
     }
-    public static function deletePOst($imgId)
+    public function deletePost()
     {
-        error_log("Delete post got called");
+
         $db = Database::get_connection();
+        $imgId = $this->id;
+        // error_log("==================" . $imgId);
         $sql = "DELETE FROM `posts`
         WHERE ((`id` = '$imgId'))";
         $result = $db->query($sql);

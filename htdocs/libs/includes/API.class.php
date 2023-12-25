@@ -63,6 +63,23 @@ class API extends REST
             }
         }
         return $exists;
+        //$exists = true;
+
+        // Check if _request is an array
+        // if (!is_array($this->_request)) {
+        //     $exists = false;
+        // } else {
+        //     // Check if each specified parameter is set in _request
+        //     foreach ($parms as $param) {
+        //         if (!isset($this->_request[$param])) {
+        //             $exists = false;
+        //             break; // Exit the loop early if a parameter is not set
+        //         }
+        //     }
+        // }
+
+        // error_log($exists . "params" . ($exists ? $this->_request['id'] : 'N/A') . "end");
+        // return $exists;
     }
 
     public function isAuthenticatedFor(User $user)
