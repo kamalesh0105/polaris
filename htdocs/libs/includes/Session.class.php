@@ -5,7 +5,7 @@ use Session as GlobalSession;
 
 class Session
 {
-    public static $user = null;
+    public static $user = null;   //object of user class
     public static $usersession = null;
 
 
@@ -43,8 +43,6 @@ class Session
     public static function get($key, $default = false)
     {
         if (Session::isset($key)) {
-            //echo "Session has set";
-            //echo "testsesss- $_SESSION[$key]";
             return $_SESSION[$key];
         } else {
             return $default;
@@ -52,9 +50,6 @@ class Session
     }
     public static  function loadtemplate($name)
     {
-        #print("including ".__DIR__."/../_templates/$name.php");
-        #print(__FILE__);
-
         $script = $_SERVER["DOCUMENT_ROOT"] . get_config('base_path') . "_templates/$name.php";
         if (is_file($script)) {
             include $script;

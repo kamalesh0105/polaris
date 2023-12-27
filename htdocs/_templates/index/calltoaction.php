@@ -9,6 +9,13 @@ if (isset($_POST['post_text']) and isset($_FILES['post_image'])) {
 ?>
     <script>
       window.location.href = "index.php?upload_success";
+      const urlParams = new URLSearchParams(window.location.search);
+      const isSuccess = urlParams.get("upload_success") === "true";
+      if (isSuccess) {
+        setTimeout(() => {
+          window.location.href = "http://localhost/index.php"; //resetting the url to default
+        }, 3000);
+      }
     </script>
 
 <?

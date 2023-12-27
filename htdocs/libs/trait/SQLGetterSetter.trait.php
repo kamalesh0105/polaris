@@ -27,7 +27,6 @@ trait SQLGetterSetter
     private function _get($var, $tab = null)
     {
         //echo "table=$tab";
-
         if (!$this->conn) {
             $this->conn = Database::get_connection();
         }
@@ -53,12 +52,14 @@ trait SQLGetterSetter
 
     private function _set($var, $data)
     {
+
+
         if (!$this->conn) {
             $this->conn = Database::get_connection();
         }
         try {
-            $sql = "UPDATE `$this->table` SET $var='$data' WHERE id='$this->id'";
-
+            $sql = "UPDATE `$this->table` SET `$var`='$data' WHERE `id`='$this->id'";
+            // error_log($sql);
             if ($this->conn->query($sql)) {
                 //echo "inside condition";
                 return true;

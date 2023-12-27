@@ -12,6 +12,7 @@ include_once "trait/SQLGetterSetter.trait.php";
 include_once "includes/usersession.class.php";
 include_once "includes/API.class.php";
 include_once 'includes/REST.class.php';
+include_once "app/Like.class.php";
 
 global $_site_config;
 //echo(__DIR__);
