@@ -55,6 +55,18 @@ class Post
         // $query="SELECT * FROM `posts` WHERE `id` = '$id' LIMIT 1";
 
     }
+    public static function delete_post_likes($imgId, $db)
+    {
+        $sql = "DELETE FROM `likes`
+        WHERE ((`post_id`='$imgId'));";
+        $res = $db->query($sql);
+        if ($res) {
+            return true;
+        } else {
+            return false;
+            error_log("error while deleting post likes.....");
+        }
+    }
     public function deletePost()
     {
 
@@ -64,7 +76,8 @@ class Post
         $sql = "DELETE FROM `posts`
         WHERE ((`id` = '$imgId'))";
         $result = $db->query($sql);
-        if ($result) {
+        $like_delete = Post::delete_post_likes($imgId, $db);
+        if ($result and $like_delete) {
             return true;
         } else {
             error_log("Post Delete Error");

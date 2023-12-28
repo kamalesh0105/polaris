@@ -1,22 +1,15 @@
 <?php
 $login_page = true;
-//Session::set('mode','web');
-//Session::set('test','websksjs');
 if (isset($_POST['username']) and isset($_POST['password'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $result = Usersession::authenticate($username, $password);
-  // echo 'res'.$result;
+
   $login_page = false;
 }
-//echo $username;
-//$result=verify_credentials($username,$password);
 if (!$login_page) {
-  //echo"log=$result";
   if ($result) {
-    //echo"sup dude";
     $should_direct = Session::get("_redirect");
-    error_log($should_direct);
     $redirect_to = get_config('base_path');
     error_log($redirect_to);
     if (isset($should_direct)) {
@@ -31,13 +24,7 @@ if (!$login_page) {
 
 
   <? } else {
-    // echo "out-$login";
   ?>
-    <!-- <main class="container">
-      <div class="bt-light p-5 rounded mt-3">
-        <h1>login failed</h1><p class="lead">please <a class="lead-ank" href="/login.php">try again</a>
-      </div></p>
-    </main> -->
     <script>
       window.location.href = "login.php?error"
     </script>

@@ -1,10 +1,6 @@
 
 <?
 
-use Psy\CodeCleaner\FunctionContextPass;
-
-use function Laravel\Prompts\error;
-
 class Like
 {
 
@@ -54,5 +50,33 @@ class Like
     public function isLiked()
     {
         return boolval($this->getLike());
+    }
+
+    public static function isliked_frontend()
+    {
+        $isloggedin = Session::isauthenticated();
+        if ($isloggedin) {
+            $userid = Session::getUser()->getId();
+
+            $sql = "SELECT `post_id` FROM `likes` WHERE `user_id`='$userid' AND `like`='1' LIMIT 20";
+            $conn = Database::get_connection();
+            $res = $conn->query($sql);
+            if ($res) {
+
+                while ($row = $res->fetch_assoc()) {
+                    $postIds[] = $row['post_id'];
+                }
+                if ($postIds != null) {
+                    return $postIds;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+                error_log("Query failed: " . $conn->error);
+            }
+        } else {
+            return false;
+        }
     }
 }

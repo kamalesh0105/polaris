@@ -3,6 +3,7 @@
     <div class="row" id="masonry-area">
       <?php
       $posts = Post::getAllPosts();
+      $data = Like::isliked_frontend();
 
       use Carbon\Carbon;
 
@@ -19,7 +20,13 @@
                 <p class="card-text"><?= $p->getpost_text(); ?></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group" data-id="<?= $post['id'] ?>">
-                    <button type="button" class="btn btn-sm btn-outline-danger btn-like">Like</button>
+                    <? if ($data && in_array($post['id'], $data)) {
+                    ?>
+                      <button type="button" class="btn btn-sm btn-danger btn-like">Liked</button>
+                    <?
+                    } else { ?>
+                      <button type="button" class="btn btn-sm btn-outline-danger btn-like">Like</button>
+                    <? } ?>
                     <button type="button" class="btn btn-sm btn-outline-success btn-share">share</button>
                     <?php
                     $owner = $p->getowner();
