@@ -76,24 +76,27 @@ $(document).ready(function () {
 });
 
 //like toggle function
-
-$(".album .btn-like").on("click", function () {
+// like toggle function
+$(document).on("click", ".album .btn-like", function () {
   postid = $(this).parent().attr("data-id");
   $this = $(this);
-  $(this).html() == "like" ? $(this).html("liked") : $(this).html("like");
-  $(this).hasClass("btn-outline-primary")
-    ? $(this).removeClass("btn-outline-primary").addClass("btn-danger")
-    : $(this).removeClass("btn-primary").addClass("btn-outline-primary");
+
+  $(this).html() == "Like" ? $(this).html("Liked") : $(this).html("Like");
+  $(this).hasClass("btn-outline-danger")
+    ? $(this).removeClass("btn-outline-danger").addClass("btn-danger")
+    : $(this).removeClass("btn-danger").addClass("btn-outline-danger");
+
   console.log("Like button got toggled");
+
   $.post("/api/post/like", { id: postid }, function (data, response, xhr) {
     console.log(response);
     if (response == "success") {
-      if (data.liked) {
-        $(this).html("liked");
-        $(this).removeClass("btn-outline-primary").addClass("btn-primary");
+      if (data.Liked) {
+        $($this).html("Liked");
+        $($this).removeClass("btn-outline-danger").addClass("btn-danger");
       } else {
-        $(this).html("like");
-        $(this).removeClass("btn-primary").addClass("btn-outline-primary");
+        $($this).html("Like");
+        $($this).removeClass("btn-danger").addClass("btn-outline-danger");
       }
     }
   });

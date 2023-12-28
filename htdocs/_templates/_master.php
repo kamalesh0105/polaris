@@ -33,7 +33,7 @@
 
 
   <script src="<? get_config('base_path') ?>assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="<? get_config('base_path'); ?>assets/js/color-modes.js"></script>
+  <!-- <script src="<? get_config('base_path'); ?>/htdocs/assets/js/color-modes.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
@@ -45,7 +45,7 @@
   <script src="/js/app.js"></script>
   <script src="/js/dialog.js"></script>
   <script src="/js/toast.js"></script>
-  <script src="/js/demo.js"></script>
+  <!-- <script src="/js/demo.js"></script> -->
 </body>
 
 </html>
