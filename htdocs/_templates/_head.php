@@ -5,13 +5,11 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
-    <title>Photogram by me</title>
+    <title>Polaris</title>
     <link href="<? get_config('base_path') ?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <div class="path-root">
-        <? // print_r($_SERVER['DOCUMENT_ROOT']);
-
+        <?
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . get_config('base_path') . "css/" . basename($_SERVER['PHP_SELF'], ".php") . ".css")) {
-            // echo "  ===>success" 
         ?>
             <link href="<? get_config('base_path') ?>css/<?= basename($_SERVER['PHP_SELF'], ".php"); ?>.css" rel="stylesheet">
 
@@ -19,10 +17,5 @@
             echo "  error";
         } ?>
     </div>
-
-    <? //}else{echo"error";}
-    ?>
-    <? //print_r(basename($_SERVER["PHP_SELF"],".php"));
-    ?>
 
 </head>

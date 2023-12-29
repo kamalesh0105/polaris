@@ -18,6 +18,7 @@
             <? } else { ?>
               <li><a href="/login.php" class="text-white">login</a></li>
             <? } ?>
+            <li><a class="text-white">Theme</a></li>
 
 
           </ul>

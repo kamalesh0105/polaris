@@ -413,7 +413,7 @@ class Toast {
     $(document.getElementById(`${this.id}`)).on("hidden.bs.toast", function () {
       $(`#${this.id}`).remove();
     });
-    console.log(t);
+    //console.log(t);
     t.show();
   }
 }

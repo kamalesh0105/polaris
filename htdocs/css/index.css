@@ -1,3 +1,26 @@
-.btn-primary {
-    --bs-btn-bg: green;
+/* .btn-light {
+  --bs-btn-bg: #9dacff;
+} */
+body {
+  margin: 0;
+  padding: 0;
+  background: url("./img/back.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
+.album {
+  margin: 0;
+  padding: 0;
+  background: url("./img/back.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+#setcolor {
+  color: #9dacff !important;
+}
+
+/* .txt-area {
+  background-color:
+  color: beige;
+} */
+/* #temp {
+  color: #9dacff;
+} */
