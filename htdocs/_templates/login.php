@@ -10,7 +10,7 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 if (!$login_page) {
   if ($result) {
     $should_direct = Session::get("_redirect");
-    $redirect_to = get_config('base_path');
+    $redirect_to = "/";
     error_log($redirect_to);
     if (isset($should_direct)) {
       $redirect_to = $should_direct;
@@ -26,7 +26,7 @@ if (!$login_page) {
   <? } else {
   ?>
     <script>
-      window.location.href = "login.php?error"
+      window.location.href = "login?error"
     </script>
   <?php
   } ?>
@@ -36,7 +36,7 @@ if (!$login_page) {
 } else {
 ?>
   <main class="form-signin w-100 m-auto">
-    <form method="post" action="login.php">
+    <form method="post" action="login">
       <img class="mb-4" src="https://academy.selfmade.ninja/assets/brand/logo-text.svg" alt="Not found" height="60">
       <input name="fingerprint" type="hidden" class="form-control" id="fingerprint" val="">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>

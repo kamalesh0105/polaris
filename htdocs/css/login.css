@@ -51,3 +51,7 @@ body {
 .btn-link {
   color: yellow !important;
 }
+
+#setcolor {
+  color: white !important;
+}

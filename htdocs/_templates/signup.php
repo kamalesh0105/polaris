@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
   } else {
 ?>
     <script>
-      window.location.href = "signup.php?signup_error";
+      window.location.href = "signup?signup_error";
     </script>
 <?php
   }
@@ -25,16 +25,16 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
   <?php if ($error) { ?>
     <?php Session::destroy(); ?>
     <script>
-      window.location.href = "login.php";
+      window.location.href = "login";
     </script>
   <?php } else { ?>
     <script>
-      window.location.href = "signup.php?signup_error";
+      window.location.href = "signup?signup_error";
     </script>
   <?php } ?>
 <?php } else { ?>
   <main class="form-signup w-100 m-auto">
-    <form method="post" action="signup.php">
+    <form method="post" action="signup">
       <img class="mb-4" src="https://academy.selfmade.ninja/assets/brand/logo-text.svg" alt="Not found" height="60">
       <h1 class="h3 mb-3 fw-normal">Please sign Up</h1>
       <div class="form-floating">

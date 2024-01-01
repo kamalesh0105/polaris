@@ -15,16 +15,8 @@ class User
         //$password=md5(strrev(md5($password)));//security through obsecurity...
         $options = ['cost' => 7,];
         $pass = password_hash($password, PASSWORD_BCRYPT, $options);
-        $sql = " INSERT INTO `auth` (`username`, `password`,`email`, `phone`, `active`)
-        VALUES ('$username','$pass','$email','$phone','1')";
-        //$error = false;
-        //! php version error
-        // if ($conn->query($sql) === true) {
-        //     $error=false;
-        // } else {
-        //     $error=$conn->error;
-
-        // }
+        $sql = " INSERT INTO `auth` (`username`, `password`,`email`, `phone`, `active`,`isadmin`)
+        VALUES ('$username','$pass','$email','$phone','1','0')";
         //* use this instead
         try {
             return $conn->query($sql);

@@ -1,9 +1,24 @@
-<footer class="text-body-secondary py-5">
+<?php
+if (Session::isset("renderTime")) {
+  $renderTime = Session::get("renderTime");
+}
+?>
+<footer class="text-body-secondary py-4 fixed-footer bg-transparent">
   <div class="container">
-    <p class="float-end mb-1">
-      <a class="ankor-link" href="#" id="setcolor">Back to top</a>
-    </p>
-    <p class="mb-1" id="setcolor">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0" id="setcolor">New to Bootstrap? <a class="ankor-link" href="/">Visit the homepage</a> or read our <a class="ankor-link" href="../getting-started/introduction/">getting started guide</a>.</p>
+    <div class="row">
+      <div class="col d-flex align-items-center">
+        <p id="setcolor" class="lead fs-6 mb-0">Made with ❤️ @ polaris.dev © 2023</p>
+      </div>
+      <div class="col d-flex align-items-center">
+        <p class="setcolor mb-0 lead fs-6" id="setcolor">
+          <?php echo "Page Rendered in " . number_format($renderTime, 4) . " ms"; ?>
+        </p>
+      </div>
+      <div class="col d-flex align-items-center">
+        <p class="float-end mb-0 fs-6 lead">
+          <a class="ankor-link" href="#" id="setcolor">Back to top</a>
+        </p>
+      </div>
+    </div>
   </div>
 </footer>
