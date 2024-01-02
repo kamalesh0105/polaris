@@ -22,10 +22,10 @@ git clone https://github.com/kamalesh0105/polaris.git (for https method)
 `sudo nano /etc/apache2/sites-available/000-default.conf`.
 paste the below or set the document root as /path/to/polaris/htdocs/
 Ex:
-Edit-`DocumentRoot /var/www/html/polaris/htdocs/`.
-`cd /etc/apache2/sites-available/`.
-`sudo a2ensite 000-default.conf `.
-`sudo service apache2 restart`.
+Edit-`DocumentRoot /var/www/html/polaris/htdocs/`  
+`cd /etc/apache2/sites-available/`  
+`sudo a2ensite 000-default.conf `  
+`sudo service apache2 restart`  
 
 ### Step 3:Configure PHP
 #### Using php.ini:
