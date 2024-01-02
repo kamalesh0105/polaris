@@ -1,8 +1,7 @@
 # Polaris
 ## Introduction
 
-This guide provides step-by-step instructions for installing and setting up the [Your Web App Name] on a LAMP stack.
-
+This guide provides step-by-step instructions for installing and setting up the Polaris (LAMP Stack).
 ## Prerequisites
 
 Before proceeding with the installation, ensure that you have the following prerequisites installed:
