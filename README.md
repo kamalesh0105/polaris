@@ -2,6 +2,8 @@
 ## Introduction
 
 This guide provides step-by-step instructions for installing and setting up the Polaris (LAMP Stack).
+checkout the beta version. 
+https://polaris.selfmade.social 
 ## Prerequisites
 
 Before proceeding with the installation, ensure that you have the following prerequisites installed:
